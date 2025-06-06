@@ -128,108 +128,114 @@ const Alpaca = () => {
   };
 
   return (
-    <div className="flex md:flex-row flex-col items-center justify-center gap-8 min-h-screen w-full">
-      <div className="img-preview">
-        <div
-          id="img-preview"
-          className="h-[450px] w-[450px] relative overflow-hidden rounded-2xl"
-        >
-          <img
-            className="background absolute z-0 rounded-2xl"
-            src={`/alpaca/backgrounds/${imageF.backgrounds}`}
-          />
-          <img
-            className="neck z-[1] absolute"
-            src={`/alpaca/neck/${imageF.neck}`}
-          />
-          <img
-            className="ear absolute z-0"
-            src={`/alpaca/ears/${imageF.ears}`}
-          />
-          <img className="nose absolute z-[2]" src={`/alpaca/nose.png`} />
-          <img
-            className="mouth absolute z-[3]"
-            src={`/alpaca/mouth/${imageF.mouth}`}
-          />
-          <img className="leg absolute" src={`/alpaca/leg/${imageF.leg}`} />
-          <img
-            className="hair absolute z[3]"
-            src={`/alpaca/hair/${imageF.hair}`}
-          />
-          <img
-            className="accessories absolute z-[2]"
-            src={`/alpaca/accessories/${imageF.accessories}`}
-          />
-          <img
-            className="eyes absolute z-[10]"
-            src={`/alpaca/eyes/${imageF.eyes}`}
-          />
-        </div>
-        <div className="btns bg-[#1f1f1fa9] mt-4 rounded-3xl flex justify-between px-4">
-          <button
-            className="p-2 cursor-pointer backdrop-blur-xl rounded-full flex gap-2 group transition-all duration-300 active:scale-[0.8]"
-            onClick={handleDownload}
+    <div className=" min-h-screen w-full px-8 items-center flex flex-col justify-center gap-8">
+      <h1 className="font-bold text-2xl text-center">Alpaca Image Generator</h1>
+      <div className="flex md:flex-row flex-col items-center justify-center gap-8">
+        <div className="img-preview">
+          <div
+            id="img-preview"
+            className="md:h-[450px] md:w-[450px] h-[300px] w-[300px] relative overflow-hidden rounded-2xl"
           >
-            <ArrowDownToLine />
-            <span
-              className="relative text-white after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 
-               after:bg-green-500 after:transition-all after:duration-300 group-hover:after:w-full"
+            <img
+              className="background absolute z-0 rounded-2xl"
+              src={`/alpaca/backgrounds/${imageF.backgrounds}`}
+            />
+            <img
+              className="neck z-[1] absolute"
+              src={`/alpaca/neck/${imageF.neck}`}
+            />
+            <img
+              className="ear absolute z-0"
+              src={`/alpaca/ears/${imageF.ears}`}
+            />
+            <img className="nose absolute z-[2]" src={`/alpaca/nose.png`} />
+            <img
+              className="mouth absolute z-[3]"
+              src={`/alpaca/mouth/${imageF.mouth}`}
+            />
+            <img className="leg absolute" src={`/alpaca/leg/${imageF.leg}`} />
+            <img
+              className="hair absolute z[3]"
+              src={`/alpaca/hair/${imageF.hair}`}
+            />
+            <img
+              className="accessories absolute z-[2]"
+              src={`/alpaca/accessories/${imageF.accessories}`}
+            />
+            <img
+              className="eyes absolute z-[10]"
+              src={`/alpaca/eyes/${imageF.eyes}`}
+            />
+          </div>
+          <div className="btns bg-[#1f1f1fa9] mt-4 rounded-3xl flex justify-between px-4">
+            <button
+              className="p-2 cursor-pointer backdrop-blur-xl rounded-full flex gap-2 group transition-all duration-300 active:scale-[0.8]"
+              onClick={handleDownload}
             >
-              Download
-            </span>
-          </button>
+              <ArrowDownToLine />
+              <span
+                className="relative text-white after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 
+               after:bg-green-500 after:transition-all after:duration-300 group-hover:after:w-full"
+              >
+                Download
+              </span>
+            </button>
 
-          <button
-            className="p-2 cursor-pointer backdrop-blur-xl rounded-full flex gap-2 group transition-all duration-300 active:scale-[0.8]"
-            onClick={handleRandom}
-          >
-            <LucideDices />
-            <span
-              className="relative text-white after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 
-               after:bg-green-500 after:transition-all after:duration-300 group-hover:after:w-full"
+            <button
+              className="p-2 cursor-pointer backdrop-blur-xl rounded-full flex gap-2 group transition-all duration-300 active:scale-[0.8]"
+              onClick={handleRandom}
             >
-              Random
-            </span>
-          </button>
-        </div>
-      </div>
-      <div id="edit-options" className="edit-options h-[450px] w-[450px]">
-        <h1 className="uppercase font-black text-lg mb-8 underline underline-offset-8">
-          Accessorize the alpaca
-        </h1>
-        <div className="changeAbles flex gap-6 flex-wrap">
-          {Object.entries(btns).map((items) => {
-            return (
-              <button
-                key={items[0]}
-                className="text-amber-100 button"
-                onClick={() => setSubBtns(items[0])}
+              <LucideDices />
+              <span
+                className="relative text-white after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 
+               after:bg-green-500 after:transition-all after:duration-300 group-hover:after:w-full"
               >
-                {items[0]}
-              </button>
-            );
-          })}
+                Random
+              </span>
+            </button>
+          </div>
         </div>
-        <h1 className="uppercase font-black text-lg mb-8 underline underline-offset-8 mt-10">
-          {subBtns}
-        </h1>
-        <div className="features flex gap-6 flex-wrap">
-          {Object.entries(btns[subBtns]).map((items) => {
-            return (
-              <button
-                key={items[0]}
-                className="text-amber-100 button"
-                onClick={() => {
-                  setImageF((prev) => ({
-                    ...prev,
-                    [subBtns]: `${items[1][1]}`,
-                  }));
-                }}
-              >
-                {items[1][0]}
-              </button>
-            );
-          })}
+        <div
+          id="edit-options"
+          className="edit-options md:h-[450px] md:w-[450px] h-[300px] w-[300px]"
+        >
+          <h1 className="uppercase font-black text-lg mb-8 underline underline-offset-8">
+            Accessorize the alpaca
+          </h1>
+          <div className="changeAbles flex gap-6 flex-wrap">
+            {Object.entries(btns).map((items) => {
+              return (
+                <button
+                  key={items[0]}
+                  className="text-amber-100 button"
+                  onClick={() => setSubBtns(items[0])}
+                >
+                  {items[0]}
+                </button>
+              );
+            })}
+          </div>
+          <h1 className="uppercase font-black text-lg mb-8 underline underline-offset-8 mt-10">
+            {subBtns}
+          </h1>
+          <div className="features flex gap-6 flex-wrap">
+            {Object.entries(btns[subBtns]).map((items) => {
+              return (
+                <button
+                  key={items[0]}
+                  className="text-amber-100 button"
+                  onClick={() => {
+                    setImageF((prev) => ({
+                      ...prev,
+                      [subBtns]: `${items[1][1]}`,
+                    }));
+                  }}
+                >
+                  {items[1][0]}
+                </button>
+              );
+            })}
+          </div>
         </div>
       </div>
     </div>
