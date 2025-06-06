@@ -128,7 +128,7 @@ const Alpaca = () => {
   };
 
   return (
-    <div className=" min-h-screen w-full px-8 items-center flex flex-col justify-center gap-8">
+    <div className=" min-h-screen w-full p-8 items-center flex flex-col justify-center gap-8">
       <h1 className="font-bold text-2xl text-center">Alpaca Image Generator</h1>
       <div className="flex md:flex-row flex-col items-center justify-center gap-8">
         <div className="img-preview">
