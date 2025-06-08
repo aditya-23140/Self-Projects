@@ -18,7 +18,7 @@ jobs:
       - name: Setup NodeJS
         uses: actions/setup-node@v4
         with:
-          node-version: "22" # or 18/22 depending on your Next.js support
+          node-version: "20" # or 18/22 depending on your Next.js support
 
       - name: Install dependencies
         run: npm ci
