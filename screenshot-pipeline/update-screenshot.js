@@ -1,9 +1,10 @@
 import puppeteer from "puppeteer-core";
+const path = "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe";
 
 (async () => {
   const browser = await puppeteer.launch({
     headless: true,
-    executablePath: "/usr/bin/google-chrome",
+    executablePath: path,
     args: ["--no-sandbox", "--disable-setuid-sandbox"],
   });
   const pages = await browser.newPage();
