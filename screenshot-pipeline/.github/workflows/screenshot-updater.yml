@@ -1,0 +1,50 @@
+name: Screenshot Updater
+
+on: 
+  push: 
+    branches: 
+      - master
+
+jobs:
+  update-screenshot:
+    runs-on: ubuntu-latest
+    permissions: 
+      contents: write
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+      - name: Setup NodeJS
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+        
+      - name: install Puppeteer dependencies
+        run: |
+          npm i puppeteer-core
+          sudo apt-get update
+          sudo apt-get install -y google-chrome-stable
+      
+      - name: install dependencies
+        run: npm ci
+      - name: build
+        run: npm run build
+      
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          publish_branch: gh-pages
+
+      - name: Run the update screenshot script
+        run: node update-screenshot.js
+        env:
+          PUPPETEER_EXECUTABLE_PATH: /usr/bin/google-chrome
+
+      - name: Commit screenshot.png to repository
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add screenshot.png
+          git commit -m "Update screenshot from workflow" || echo "No changes"
+          git push
