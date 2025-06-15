@@ -122,7 +122,7 @@ const Alpaca = () => {
     html2canvas(element, { useCORS: true }).then((canvas) => {
       const link = document.createElement("a");
       link.download = "alpaca.png";
-      link.href = canvas.toDataURL("img/png");
+      link.href = canvas.toDataURL("image/png");
       link.click();
     });
   };
